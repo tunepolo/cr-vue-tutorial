@@ -48,6 +48,13 @@ const app = new Vue({
       return this.todos.filter(function(el) {
         return this.current < 0 ? true : this.current == el.state
       }, this)
+    },
+    // キーから見つけやすいように、次のように加工したデータを作成
+    // {0: '作業中', 1: '完了', -1: 'すべて'}
+    labels() {
+      return this.options.reduce(function(a, b) {
+        return Object.assign(a, { [b.value]: b.label })
+      }, {})
     }
   },
   methods: {
