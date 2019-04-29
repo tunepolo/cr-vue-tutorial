@@ -50,6 +50,13 @@ const app = new Vue({
       })
       // 入力欄を空にする
       comment.value = ''
+    },
+    changeState: function(item) {
+      item.state = item.state ? 0 : 1
+    },
+    removeComment: function(item) {
+      var index = this.todos.indexOf(item)
+      this.todos.splice(index, 1)
     }
   }
 })
