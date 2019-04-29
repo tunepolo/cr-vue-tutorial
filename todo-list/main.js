@@ -26,6 +26,18 @@ const app = new Vue({
     todos: []
   },
   methods: {
-    // 使用するメソッド
+    addComment: function(event, value) {
+      var comment = this.$refs.comment
+      if (!comment.value.length) {
+        return
+      }
+      this.todos.push({
+        id: todoStorage.uid++,
+        comment: comment.value,
+        state: 0
+      })
+      // 入力欄を空にする
+      comment.value = ''
+    }
   }
 })
