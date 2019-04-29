@@ -25,6 +25,18 @@ const app = new Vue({
   data: {
     todos: []
   },
+  created() {
+    // インスタンス作成時にローカルストレージから保存データを取得する
+    this.todos = todoStorage.fetch()
+  },
+  watch: {
+    todos: {
+      handler: function(todos) {
+        todoStorage.save(todos)
+      },
+      deep: true
+    }
+  },
   methods: {
     addComment: function(event, value) {
       var comment = this.$refs.comment
