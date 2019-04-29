@@ -7,6 +7,9 @@
 </head>
 <body>
   <div id="app">
+    <label v-for="option in options">
+      <input type="radio" v-model="current" v-bind:value="option.value">{{ option.label }}
+    </label>
     <table>
       <!-- テーブルヘッダ -->
       <thead>
@@ -18,7 +21,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in todos" v-bind:key="item.id">
+        <tr v-for="item in computedTodos" v-bind:key="item.id">
           <th>{{ item.id }}</th>
           <td>{{ item.comment }}</td>
           <td class="state">
